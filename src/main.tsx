@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
-import { GlobalStyle, Basics, Form } from 'styles';
+import { GlobalStyle, Form } from 'styles';
 import Logo from 'images/logo.png';
 import { Loader } from 'components';
 import { Validate, Endpoint } from 'utility';
@@ -88,8 +88,7 @@ const App = () => {
     password: '',
     password2: ''
   });
-
-  const [showMessage, setShowMessage] = useState(false);
+  
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState({
     name: '',
