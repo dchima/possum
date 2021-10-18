@@ -1,15 +1,16 @@
-// 'use strict';
-
 const uuid = require('uuid');
 const AWS = require('aws-sdk');
-// const bluebird = require('bluebird');
 const bcrypt = require('bcryptjs');
-
-// AWS.config.setPromisesDependency(bluebird);
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
-
+/**
+ * 
+ * @param {*} event - aws event
+ * @param {*} context - aws context
+ * @param {*} callback - callback function
+ * @returns {object} - response body to client
+ */
 exports.submit = (event, context, callback) => {
   console.log('event: ', event.name);
   console.log('body: ', event.body);
@@ -18,10 +19,7 @@ exports.submit = (event, context, callback) => {
   if (!body) errorResponse(callback, 'Bad Request', 400)
   const awsId = context.awsRequestId
 
-  // if (typeof user.name !== 'string' || typeof user.email !== 'string' || typeof user.password !== 'string') {
-  //   return errorResponse(callback, 'User Details not saved. Please check user parameters', 400);    
-  // }
-
+  // submit user
   submitUser(body).then(res => {
     callback(null, {
         statusCode: 201,
@@ -38,10 +36,17 @@ exports.submit = (event, context, callback) => {
   });
 };
 
+/**
+ * submit user function
+ * @param {object} user - user object
+ * @returns {object} submitted uer id and name
+ */
 const submitUser = (user) => {
   console.log('user: ', user);
   const timestamp = new Date().getTime();
   const id = uuid.v4();
+  
+  // hash user password in the process for extra security
   const userData = {
     TableName: process.env.REGISTRATION_TABLE,
     Item: {
@@ -52,12 +57,18 @@ const submitUser = (user) => {
       updatedAt: timestamp
     }
   };
+
+  // post to dynamo database
   return dynamoDb.put(userData).promise().then(res => ({ id, name: user.name, email: user.email }));
-  // return dynamoDb.put(userData).promise();
 
 };
 
-
+/**
+ * Error Response fuction
+ * @param {*} callback - callback function
+ * @param {*} message - error message
+ * @param {*} code - error code
+ */
 const errorResponse = (callback, message, code = 500) => {
   callback(null, {
     statusCode: code,
@@ -69,15 +80,4 @@ const errorResponse = (callback, message, code = 500) => {
     }
   });
 };
-
-// const successResponse = (callback, message, statusCode = 200, body) => {
-//   callback(null, {
-//     statusCode,
-//     body: JSON.stringify(body),
-//     headers: {
-//       'Access-Control-Allow-Origin': '*',
-//     }
-//   });
-// };
-
 

@@ -1,3 +1,12 @@
+
+/**
+ * Validate User input
+ * @param {string} name - user name
+ * @param {string} email - user email address
+ * @param {string} password - user password
+ * @param {string} password2 - user confirm password
+ * @returns 
+ */
 const validate = (name: string, email: string, password: string, password2: string) => {
   let errors = {
     name: "",

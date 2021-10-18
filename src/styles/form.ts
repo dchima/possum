@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+/**
+ * Form Styling
+ */
 export default styled.form`
   display: flex;
   flex-direction: column;

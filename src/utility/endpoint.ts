@@ -1,5 +1,10 @@
 const API: string = process.env.REACT_APP_API_URI as string;
 
+/**
+ *  API POST Function
+ * @param {object} payload user payload
+ * @returns {object} api response
+ */
 const submit = async (payload: object) => {
   console.log(API);
   let statusCode: number;
