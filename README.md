@@ -12,9 +12,11 @@ View Application: https://mwf-registration.netlify.app/
 ### Client
 The Client side was build using React with Typescript. It was deployed on [Netlify](https://mwf-registration.netlify.app/).
 
-### Server
-The Server is a [Serverless](https://serverless.com) function build in Nodejs
+Since it was a simple 2 step view, no use of external modules required. All validations performed with regex. Styling done with [Styled-Components](https://styled-components.com/)
 
-API: https://wwqck24tfc.execute-api.eu-west-1.amazonaws.com/dev/register
+---
+
+### Server
+The Server is a [Serverless](https://serverless.com) function build in Nodejs. You can use the API here: https://wwqck24tfc.execute-api.eu-west-1.amazonaws.com/dev/register
 
 ---
