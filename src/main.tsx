@@ -6,7 +6,9 @@ import { Loader } from 'components';
 import { Validate, Endpoint } from 'utility';
 
 
-
+/**
+ * Application container styling
+ */
 const AppContainer = styled.div`
   position: relative;
   display: flex;
@@ -15,6 +17,9 @@ const AppContainer = styled.div`
   height: 100vh;
 `;
 
+/**
+ * form wrapper styling
+ */
 const Wrapper = styled.div`
   width: 350px;
   display: flex;
@@ -31,7 +36,9 @@ const Wrapper = styled.div`
   0 1px 5.9px rgba(0, 0, 0, 0.04);
 `;
 
-
+/**
+ * Button Styling
+ */
 const Button = styled.div`
   position: relative;
   width: max-content;
@@ -65,13 +72,18 @@ const Image = styled.div`
   }
 `;
 
+/**
+ * Button Wrapper
+ */
 const ButtonWrapper = styled.div`
   align-self: flex-end;
   display: flex;
   flex-direction: row;
 `;
 
-
+/**
+ * Error message styling
+ */
 const ErrorMessage = styled.div`
   top: 25px;
   right: 20px;
@@ -81,6 +93,10 @@ const ErrorMessage = styled.div`
   margin-bottom: 10px
 `;
 
+/**
+ * 2 Step Registration
+ * @returns React Fucntion
+ */
 const App = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -102,15 +118,26 @@ const App = () => {
     name, email, password, password2
   } = formData;
 
+  /**
+   * On change Function
+   * @param {*} e - html element 
+   */
   const onChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
+  /**
+   * Use Effect to validate input Changes
+   */
   useEffect(() => {
     setErrorMessage(Validate(name, email, password, password2))
   }, [email, name, password, password2]);
   
   
+  /**
+   * Submit User Details
+   * @param {*} e - Html element 
+   */
   const onSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -121,6 +148,9 @@ const App = () => {
     }
   };
 
+  /**
+   * Reset to default
+   */
   const onReset = () => {
     setFormData({
       name: '',

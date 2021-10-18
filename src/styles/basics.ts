@@ -1,3 +1,6 @@
+/**
+ * boiler plate params
+ */
 const basics = {
   colors: {
     black: '#000000',
