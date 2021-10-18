@@ -4,7 +4,7 @@
   const Loader = () => (
   
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-    width="15px" height="20px" viewBox="0 0 24 30" >
+    width="10px" height="10px" viewBox="0 0 24 30" >
     <rect x="0" y="13" width="4" height="5" fill="#ffffff">
     <animate attributeName="height" attributeType="XML"
       values="5;21;5"

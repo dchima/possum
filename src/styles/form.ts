@@ -3,10 +3,12 @@ import styled from 'styled-components';
 export default styled.form`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   justify-content: center;
+  margin-bottom: 60px;
+  margin-top: 50px;
   input{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: 1px solid #dbdbdb;
     padding: 10px 30px;
     border-radius: 15px;
