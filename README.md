@@ -19,4 +19,8 @@ Since it was a simple 2 step view, no use of external modules required. All vali
 ### Server
 The Server is a [Serverless](https://serverless.com) function build in Nodejs. You can use the API here: https://wwqck24tfc.execute-api.eu-west-1.amazonaws.com/dev/register
 
+```bash
+curl -H "Content-Type: application/json" -X POST '{"name":"Joshua Alison","email":"jalison@test.com","password":"password"}' https://wwqck24tfc.execute-api.eu-west-1.amazonaws.com/dev/register
+```
+
 ---
